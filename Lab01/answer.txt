@@ -1,0 +1,27 @@
+
+Questions for exercise 2.1.1:
+- What happens if users choose “Cancel”?
+- How to customize the options to users, e.g. only two options: “Yes” and “No”, OR “I do”
+and “I don’t”
+
+
+Answer:
+- If the user choose “Cancel”, the message "You've chosen: No" will be displayed because: 
++ The code check if the option is 'JOptionPane.YES_OPTION' or not to display 'YES' message; otherwise it will return 'NO'
++ In this case, choosing 'Cancel' will return 'JOptionPane.CANCEL_OPTION' which display 'NO' message
+
+- To customize the options limited to only 2 options, we can use the JOptionPane.showOptionDialog instead of showConfirmDialog:
+
+import javax.swing.JOptionPane;
+public class ChoosingOption {
+    public static void main(String[] args) {
+        String[] options = { "Yes", "No" }; // Customize the button labels
+        int option = JOptionPane.showOptionDialog(null,
+            "Do you want to change to the first class ticket?", "Choose an Option",
+            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+
+        String choice = (option == JOptionPane.YES_OPTION) ? "Yes" : "No";
+        JOptionPane.showMessageDialog(null, "You've chosen: " + choice);
+        System.exit(0);
+    }
+}
