@@ -15,13 +15,33 @@ public class DigitalVideoDisc {
 		this.director = director;
 		this.length = length;
 		this.cost = cost;
+        // Increment the class variable and assign a unique ID to this DVD
+        nbDigitalVideoDiscs++;
+        id = nbDigitalVideoDiscs;
 	}
+	
+	// Get the instance and class attribute
+	public int getId() {
+        return id;
+    }
+	
+    public static int getNbDigitalVideoDiscs() {
+        return nbDigitalVideoDiscs;
+    }
+
 	
 	private String title;
 	private String category;
 	private String director;
 	private int length;
 	private float cost;
+	// Instance attribute 
+	private int id;
+	// Class attribute
+	private static int nbDigitalVideoDiscs = 0;
+	
+	
+	// Getter and setter
 	public String getTitle() {
 		return title;
 	}
