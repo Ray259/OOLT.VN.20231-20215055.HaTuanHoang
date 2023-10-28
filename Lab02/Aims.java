@@ -28,14 +28,34 @@ public class Aims {
 		System.out.println(anOrder.totalCost());
 		
 		//test adding a list of DVDs to the Cart
-		DigitalVideoDisc[] dvdList = {
+//		DigitalVideoDisc[] dvdList = {
+//				new DigitalVideoDisc("Interstellar",
+//						"Science Fiction", "Christopher Nolan", 169, 20f),						
+//				new DigitalVideoDisc("Dune",
+//						"Science Fiction", "Denis Villeneuve", 156, 20f)
+//		};		
+//		anOrder.addDigitalVideoDisc(dvdList);
+//		anOrder.displayCart();
+		
+		//test adding arbitrary number of parameters
+		anOrder.addDigitalVideoDisc(
 				new DigitalVideoDisc("Interstellar",
 						"Science Fiction", "Christopher Nolan", 169, 20f),						
 				new DigitalVideoDisc("Dune",
-						"Science Fiction", "Denis Villeneuve", 156, 20f)
-		};
+						"Science Fiction", "Denis Villeneuve", 156, 20f),
+				new DigitalVideoDisc("The Godfather",
+						"Drama", "Francis Ford Coppola", 175, 20f)
+		);
+		anOrder.displayCart();
 		
-		anOrder.addDigitalVideoDisc(dvdList);
+		//test adding only 2 parameters:
+		
+		anOrder.addDigitalVideoDisc(
+				new DigitalVideoDisc("Inception",
+						"Science Fiction", "Christopher Nolan", 148, 20f),						
+				new DigitalVideoDisc("The Shawshank Redemption",
+						"Drama", "Frank Darabont", 142, 20f)		
+		);
 		anOrder.displayCart();
 		
 	}
