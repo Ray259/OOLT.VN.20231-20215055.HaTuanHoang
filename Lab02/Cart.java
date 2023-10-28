@@ -5,16 +5,38 @@ public class Cart {
     
     private int qtyOrdered = 0; // Field to track number of items in cart
 
-    // Add DVD method
+    
+    
+    
+    // Add 1 DVD method
     public void addDigitalVideoDisc(DigitalVideoDisc disc) {
         if (qtyOrdered < MAX_NUMBERS_ORDERED) {	
             itemsOrdered[qtyOrdered] = disc;
             qtyOrdered++;
-            System.out.println("The disc has been added");
+            System.out.println("The disc '"+ disc.getTitle() +"' has been added");
         } else {
             System.out.println("The cart is almost full");
         }
     }
+
+    
+//	  Method overloading
+    
+//	 Adding list of DVDs method overloading
+	  public void addDigitalVideoDisc(DigitalVideoDisc [] dvdList ) {
+	 
+	 		if(qtyOrdered + dvdList.length <= MAX_NUMBERS_ORDERED) {
+	 			for (DigitalVideoDisc item : dvdList) {
+	 				itemsOrdered[qtyOrdered] = item;
+	 	 qtyOrdered++;
+	 	 System.out.println("**The disc '"+ item.getTitle() +"' has been added");
+	 			}
+	 		} else {
+	 			System.out.println("(!) The cart is almost full. "
+	 					+ "You cannot add more than "+ MAX_NUMBERS_ORDERED +" DVDs.");
+	 		}	
+	  }
+
 
     // Remove DVD method
     public void removeDigitalVideoDisc(DigitalVideoDisc disc) {
@@ -43,4 +65,21 @@ public class Cart {
 	public int getQtyOrdered() {
 		return qtyOrdered;
 	}
+	
+	// Print the table of DVD in Cart
+	public void displayCart() {
+	        System.out.println("----------------------------------------------");
+	        System.out.printf("| %-30s | %5s |\n", "--Name--", "Cost");
+	
+	        for (int i = 0; i < this.qtyOrdered; i++) {
+	            DigitalVideoDisc dvd = this.itemsOrdered[i];
+	            if (dvd != null) {
+	                System.out.printf("| %-30s | %5.2f |\n", dvd.getTitle(), dvd.getCost());
+	            }
+	        }
+	        System.out.printf("| %-30s | %5.2f |\n", "--Total Cost--", this.totalCost());
+	        System.out.println("----------------------------------------------");
+	}
 }
+
+
