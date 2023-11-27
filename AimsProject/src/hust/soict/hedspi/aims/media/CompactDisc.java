@@ -11,24 +11,20 @@ public class CompactDisc extends Disc implements Playable {
 		this.tracks = tracks;
 	}
 	
+	//Attributes
+	private String artist;
+	private ArrayList<Track> tracks = new ArrayList<Track>();
+	
+	
 	// play() interface
 	public void play() {
 		for (Track o : tracks) {
 	    	o.play();
-	    	System.out.println("DVD ended. Playing next DVD...");
+	    	System.out.println("Track ended. Waiting for next track...");
 		}
+		System.out.println("CD ended...");
 	}
 
-	
-	private String artist;
-	private ArrayList<Track> tracks = new ArrayList<Track>();
-	//Getter
-	public String getArtist() {
-		return artist;
-	}
-	
-	
-	
 	//toString
 	@Override
     public String toString() {
@@ -38,13 +34,13 @@ public class CompactDisc extends Disc implements Playable {
 			tracks+= "\n   "+i+ ". " + o.getTitle()+": "+o.getLength()+" (s)";
 			i++;
 		}
-    	String string = "CD: \n Title: "+ this.getTitle()+","+
-    						"\n Category: "+this.getCategory()+","+
-                			"\n Director: "+this.getDirector()+","+
-                			"\n Artist: "+this.getArtist()+","+
-                			"\n Length: "+this.getLength()+","+
+    	String string = "CD: \n Title: "+ this.getTitle()+
+    						",\n Category: "+this.getCategory()+
+                			",\n Director: "+this.getDirector()+
+                			",\n Artist: "+this.getArtist()+
+                			",\n Length: "+this.getLength()+
                 			tracks+
-                			"\n*Cost: "+this.getCost()+" $ \n";
+                			",\n*Cost: "+this.getCost()+" $ \n";
     	return string;
     }
 	
@@ -53,8 +49,7 @@ public class CompactDisc extends Disc implements Playable {
 		boolean exist=false;
 		for (Track o : tracks) {
 			if(o.equals(track)) {
-				exist = true;
-				break;
+				exist = true; break;
 			} 
 		}
 		if(exist) System.out.println("Already exist.");
@@ -63,7 +58,6 @@ public class CompactDisc extends Disc implements Playable {
 			System.out.println("The track "+track.getTitle()+" has been added to the disc.");
 		}
 	}
-	
 	
 	
 	public void removeTrack(Track track) {
@@ -80,4 +74,10 @@ public class CompactDisc extends Disc implements Playable {
 			System.out.println("The track "+track.getTitle()+" has been removed to the disc.");
 		}
 	}
+	
+	
+	//Getter
+	public String getArtist() {
+		return artist;
+	}	
 }
