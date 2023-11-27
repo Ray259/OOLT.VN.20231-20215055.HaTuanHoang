@@ -63,24 +63,29 @@ public class Aims {
 	
 	// Options from 4 main menu
 	// Main menu 
+	private static Scanner sc = new Scanner(System.in);
 	public static void start(Store aStore, Cart anOrder) {
 		showMenu();
-		Scanner sc = new Scanner(System.in);
+		
 		int c = sc.nextInt(); sc.nextLine();
-		sc.close();
 		switch (c) {
 		case 0:
 			System.out.println("\n Exit Aims...");
-			break;
+			return;
 		case 1: 
+			// view store
 			aStore.viewStore();
 			choosingStoreMenu(aStore, anOrder);
+			start(aStore, anOrder);
 			break;
 		case 2:
-			updateStore(aStore, anOrder);
+			// update store
+			choosingUpdateStore(aStore, anOrder);
+			start(aStore, anOrder);
 			break;
 		case 3:
-			seeCurrentCart(anOrder);
+			// see current cart
+			
 			break;
 	}}
 	
@@ -89,15 +94,15 @@ public class Aims {
 	// Store Menu
 	public static void choosingStoreMenu(Store aStore, Cart anOrder) {
 		storeMenu();
-		Scanner sc = new Scanner(System.in);
-		int c = sc.nextInt();
-		sc.close();
+		
+		int c = sc.nextInt();sc.nextLine();
 		switch (c) {
 		case 0:
 			System.out.println("\n Returned to main menu.");
 			start(aStore, anOrder);
 			break;
-		case 1:  //see details of a media
+		case 1:  
+			//see details of a media
 			System.out.println("\n See details for item: ");
 			Media m = validMediaStore(aStore);
 			choosingMediaDetailsMenu(aStore, anOrder, m);
@@ -124,9 +129,8 @@ public class Aims {
 	// Media Details Menu
 	public static void choosingMediaDetailsMenu(Store aStore, Cart anOrder, Media m) {
 		mediaDetailsMenu();
-		Scanner sc = new Scanner(System.in);
-		int c = sc.nextInt();
-		sc.close();
+		
+		int c = sc.nextInt();sc.nextLine();
 		switch (c) {
 		case 0:
 			System.out.println("\n Returned to Store Menu.");
@@ -146,9 +150,8 @@ public class Aims {
 	// Cart Menu
 	public static void choosingCartMenu(Store aStore, Cart anOrder) {
 		cartMenu();
-		Scanner sc = new Scanner(System.in);
-		int c = sc.nextInt();
-		sc.close();
+		
+		int c = sc.nextInt();sc.nextLine();
 		switch(c) {
 		case 0:
 			start(aStore, anOrder);
@@ -156,7 +159,9 @@ public class Aims {
 		case 1: // filter media cart
 		case 2: // sort media cart
 		case 3: // remove media from cart
-		case 4: // play a media
+		case 4: // Play media in cart
+
+		    break;
 		case 5: // place order
 		}
 	}
@@ -164,32 +169,36 @@ public class Aims {
 	
 	// Input and execute Options:
 
-		// Update Store
-		public static void updateStore(Store aStore, Cart anOrder) {
-			Scanner sc = new Scanner(System.in);
+		// 2. Update Store
+		public static void choosingUpdateStore(Store aStore, Cart anOrder) {
+			
 			System.out.println("\n How would you like to update the store? \n 1. Add a media \n 2. Remove a media");
-			int c = sc.nextInt(); sc.nextLine();
-			sc.close();
+			int c = sc.nextInt();sc.nextLine();
 			switch (c) {
 			case 1:
 				addMediaStore(aStore, anOrder);
 			case 2:
-				removeMediaStore(aStore);
+				removeMediaStore(aStore, anOrder);
 			}
 		}
-		
+		// add media to store
 		public static void addMediaStore(Store aStore, Cart anOrder) {		
-			Scanner sc = new Scanner(System.in);
-			System.out.println("\n Which type of Media would you like to add? \n 1. Book \n 2. DVD \n 3. CD");
+			
+			System.out.println
+			("\n Which type of Media would you like to add? \n 1. Book \n 2. DVD \n 3. CD");
 			int c = sc.nextInt(); sc.nextLine();
-			System.out.println("Enter the title: ");
+			System.out.println
+			("Enter the title: ");
 			String title = sc.nextLine();
-			System.out.println("Enter the category: ");
+			System.out.println
+			("Enter the category: ");
 			String category = sc.nextLine();
-			System.out.println("Enter the cost: ");
-			float cost = sc.nextFloat(); sc.nextLine();
+			System.out.println
+			("Enter the cost: ");
+				float cost = sc.nextFloat(); sc.nextLine();
 			switch (c) {
 			case 1:
+				// add Book
 				System.out.println("Enter the authors: ");
 				ArrayList<String> authors = new ArrayList<String>();				
 				authors.add(sc.nextLine());				
@@ -197,6 +206,7 @@ public class Aims {
 				start(aStore, anOrder);
 				break;
 			case 2:
+				// add DVD
 				System.out.println("Enter the director: ");
 				String director = sc.nextLine();
 				System.out.println("Enter the length: ");
@@ -205,49 +215,65 @@ public class Aims {
 				start(aStore, anOrder);
 				break;
 			case 3:
+				// add Track
 				System.out.println("Enter the director: ");
 				String dir = sc.nextLine();
 				System.out.println("Enter the length: ");
 				int lng = sc.nextInt(); sc.nextLine();
 				System.out.println("Enter the artist: ");
 				String artist = sc.nextLine();			
-				System.out.println("Enter the track: ");
+				System.out.println("Enter the number of track(s): ");
+				int n = sc.nextInt(); sc.nextLine();
 				ArrayList<Track> tracks = new ArrayList<Track>();
+				for (int i=1; i<=n;i++) {
+					System.out.println("Enter track-"+i+"'s name: ");
+					String trackTitle=sc.nextLine();
+					System.out.println("Enter track-"+i+"'s length: ");
+					int trackLength = sc.nextInt(); sc.nextLine();
+					tracks.add(new Track(trackTitle, trackLength));	
+				}
 				
-				System.out.println("Enter track's name: ");
-				String trackTitle=sc.nextLine();
-				System.out.println("Enter track's length: ");
-				int trackLength = sc.nextInt(); sc.nextLine();
-				tracks.add(new Track(trackTitle, trackLength));
 				
 				aStore.addMedia(new CompactDisc(title, category, dir, lng, cost, artist, tracks));
 				start(aStore, anOrder);
 				break;
 			}
 		}
-		public static void removeMediaStore(Store aStore) {
+		// remove media from store
+		public static void removeMediaStore(Store aStore, Cart anOrder) {
 			Media m = validMediaStore(aStore);
 			aStore.removeMedia(m);
 			System.out.println("\n Removed sucessful.");
+			start(aStore, anOrder);
 		}
 		
-		// Loop check if media with a title exist
+		// Loop check if media with a title exist in a Store or in a Cart, depend on a store or cart is passed
 		public static Media validMediaStore(Store aStore) {
 			Media m =null;
-			Scanner sc = new Scanner(System.in);
+			
 			while(m==null) {
 				System.out.println("Enter the title: ");
 				String title = sc.nextLine();
 				m = aStore.search(title);
 				if (m==null) System.out.println("Not available in store");
-			}
-			sc.close();
+			}			
+			return m;
+		}
+		public static Media validMediaStore(Cart anOrdered) {
+			Media m =null;
+			
+			while(m==null) {
+				System.out.println("Enter the title: ");
+				String title = sc.nextLine();
+				m = anOrdered.search(title);
+				if (m==null) System.out.println("Not available in store");
+			}			
 			return m;
 		}
 		
 		// Play a media
 		public static boolean playMedia(Media m) {
-			if (m instanceof DigitalVideoDisc || m instanceof CompactDisc) {
+			if (m instanceof Playable) {
 				((Playable) m).play();
 				return true;
 			} else {
@@ -257,10 +283,21 @@ public class Aims {
 		}
 		
 		
-		// 3. See current Cart
-		public static void seeCurrentCart(Cart anOrder) {
-			
+	// 3. See current Cart
+	public static void filterMediaInCart(Store aStore, Cart anOrder) {
+		System.out.println("Filter Medias in Cart");
+		System.out.println("Filter type: \n1. Title\n2. Id");
+		 
+		int c = sc.nextInt();sc.nextLine();
+		switch (c){
+			case 1:
+				//filter by id
+				break;
+			case 2:
+				//filter by name
+				break;		
 		}
+	}
 		
 	
 	public static void main(String[] args) {
