@@ -9,6 +9,7 @@ import hust.soict.hedspi.aims.media.CompactDisc;
 import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.media.Playable;
 import hust.soict.hedspi.aims.media.Track;
+import hust.soict.hedspi.aims.screen.manager.StoreManagerScreen;
 import hust.soict.hedspi.aims.store.Store;
 
 public class Aims {
