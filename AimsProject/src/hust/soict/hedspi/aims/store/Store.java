@@ -55,4 +55,12 @@ public class Store {
 	    System.out.println("\nNo matching item found with the name: " + title);
 	    return null;
 	}
+
+	public ArrayList<Media> getItemsInStore() {
+		return itemsInStore;
+	}
+
+	public void setItemsInStore(ArrayList<Media> itemsInStore) {
+		this.itemsInStore = itemsInStore;
+	}
 }
