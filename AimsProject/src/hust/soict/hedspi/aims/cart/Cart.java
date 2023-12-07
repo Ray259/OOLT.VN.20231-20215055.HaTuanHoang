@@ -1,6 +1,6 @@
 package hust.soict.hedspi.aims.cart;
 import java.util.ArrayList;
-
+import java.util.Collections;
 
 import hust.soict.hedspi.aims.media.Media;
 
@@ -77,6 +77,25 @@ public class Cart {
         }
         System.out.printf("Total cost: "+ this.totalCost()+ "\n");
 		System.out.println("***************************************************\n");
+	}
+	
+	// sort by title
+	public void sortByTitle() {
+		Collections.sort(itemsOrdered, Media.COMPARE_BY_TITLE_COST);
+	}
+
+	// sort by cost
+	public void sortByCost() {
+		Collections.sort(itemsOrdered, Media.COMPARE_BY_COST_TITLE);
+	}
+	
+	// getter
+	public static int getMaxNumbersOrdered() {
+		return MAX_NUMBERS_ORDERED;
+	}
+
+	public ArrayList<Media> getItemsOrdered() {
+		return itemsOrdered;
 	}
 	
 }

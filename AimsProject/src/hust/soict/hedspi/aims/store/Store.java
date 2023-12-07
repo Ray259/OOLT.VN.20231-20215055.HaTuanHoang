@@ -1,6 +1,7 @@
 package hust.soict.hedspi.aims.store;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import hust.soict.hedspi.aims.media.Media;
 
@@ -21,14 +22,19 @@ public class Store {
 	    System.out.println("**The media '" + m.getTitle() + "' has been added");
 	}
 	
-    public void removeMedia(Media m) {
-    	for(Media media: itemsInStore) {
-			if(media.getTitle() == m.getTitle()) {
-				itemsInStore.remove(m);
-				System.out.println("The disc has been removed");
-			}
-    	}
-    }
+	public void removeMedia(Media m) {
+	    ArrayList<Media> itemsToRemove = new ArrayList<>();
+	    for (Media o : itemsInStore) {
+	        if (m.equals(o)) {
+	            itemsToRemove.add(o);
+	        }
+	    }
+
+	    for (Media o : itemsToRemove) {
+	        itemsInStore.remove(o);
+	    }	    
+	        System.out.println("The media has been removed");	    
+	}
     
     
     // View Store
@@ -54,5 +60,23 @@ public class Store {
 	    }
 	    System.out.println("\nNo matching item found with the name: " + title);
 	    return null;
+	}
+
+	public ArrayList<Media> getItemsInStore() {
+		return itemsInStore;
+	}
+
+	public void setItemsInStore(ArrayList<Media> itemsInStore) {
+		this.itemsInStore = itemsInStore;
+	}
+	
+	// sort by title
+	public void sortByTitle() {
+		Collections.sort(itemsInStore, Media.COMPARE_BY_TITLE_COST);
+	}
+
+	// sort by cost
+	public void sortByCost() {
+		Collections.sort(itemsInStore, Media.COMPARE_BY_COST_TITLE);
 	}
 }
