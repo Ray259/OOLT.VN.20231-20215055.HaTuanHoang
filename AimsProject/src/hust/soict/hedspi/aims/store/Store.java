@@ -69,14 +69,4 @@ public class Store {
 	public void setItemsInStore(ArrayList<Media> itemsInStore) {
 		this.itemsInStore = itemsInStore;
 	}
-	
-	// sort by title
-	public void sortByTitle() {
-		Collections.sort(itemsInStore, Media.COMPARE_BY_TITLE_COST);
-	}
-
-	// sort by cost
-	public void sortByCost() {
-		Collections.sort(itemsInStore, Media.COMPARE_BY_COST_TITLE);
-	}
 }
