@@ -80,4 +80,7 @@ public class CompactDisc extends Disc implements Playable {
 	public String getArtist() {
 		return artist;
 	}	
+	public ArrayList<Track> getTracks(){
+		return tracks;
+	}
 }

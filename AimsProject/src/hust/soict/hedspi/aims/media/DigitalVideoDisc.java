@@ -12,9 +12,6 @@ public class DigitalVideoDisc extends Disc implements Playable {
 
 	public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
 		super(title, category, director, length, cost);
-        // Increment the class variable and assign a unique ID to this DVD
-        nbDigitalVideoDiscs++;
-        id = nbDigitalVideoDiscs;
 	}
 	
 	//Attributes
@@ -37,14 +34,5 @@ public class DigitalVideoDisc extends Disc implements Playable {
     public void play() {
     	System.out.println("Playing DVD: "+this.getTitle());
     	System.out.println("DVD length: "+ this.getLength());
-    }
-	
-    
-	// Getter, setter
-	public int getId() {
-        return id;
-    }
-    public static int getNbDigitalVideoDiscs() {
-        return nbDigitalVideoDiscs;
     }
 }

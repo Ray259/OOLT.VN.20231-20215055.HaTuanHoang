@@ -17,17 +17,16 @@
             <Insets right="8.0" />
          </BorderPane.margin>
          <children>
-            <VBox prefHeight="65.0" prefWidth="100.0">
-               <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="103.0" text="Tools" textFill="#ff1a1a">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <CheckBox fx:id="penBox" mnemonicParsing="false" onAction="#penCheckBoxAction" text="Pen" />
-                  <CheckBox fx:id="eraseBox" mnemonicParsing="false" onAction="#eraserCheckBoxAction" text="Eraser" />
-               </children>
-            </VBox>
+            <TitledPane animated="false" minWidth="-Infinity" prefHeight="80.0" prefWidth="124.0" style="-fx-background-color: blue;" text="Tool">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <RadioButton fx:id="penBox" layoutX="15.0" layoutY="10.0" mnemonicParsing="false" onAction="#penCheckBoxAction" text="Pen" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="0.0" />
+                        <RadioButton fx:id="eraseBox" layoutX="14.0" layoutY="32.0" mnemonicParsing="false" onAction="#eraserCheckBoxAction" text="Eraser" AnchorPane.leftAnchor="8.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </TitledPane>
             <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#clearButtonPressed" text="Clear" />
          </children>
       </VBox>

@@ -27,7 +27,7 @@ public class MediaTest {
         ArrayList<Track> tracks = new ArrayList<>();
         tracks.add(track1);
         tracks.add(track2);
-        CompactDisc cd = new CompactDisc("Sample Title", "Music", "John A", 300, 25f, "Jack B", tracks);
+        CompactDisc cd = new CompactDisc("Sample CD", "Music", "John A", 300, 25f, "Jack B", tracks);
 
 		
 		media.add(cd);
