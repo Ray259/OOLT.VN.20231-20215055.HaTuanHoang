@@ -13,7 +13,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class TestViewCart extends Application {
-	private static final Media DigitalVideoDisc = null;
 	private static Cart cart;
 	private static Store store;
 	

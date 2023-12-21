@@ -155,7 +155,7 @@ public class CartController {
 	private TableColumn<Media, String> colMediaCategory;
 
 	@FXML
-	void btnPlayPressed(ActionEvent event) {
+	void btnPlayPressed(ActionEvent event) throws IOException {
 		Media media = tblMedia.getSelectionModel().getSelectedItem();
 		PlayMediaSceneUtil.playMedia(media);
 	}

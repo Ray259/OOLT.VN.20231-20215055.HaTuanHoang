@@ -3,13 +3,14 @@ package hust.soict.hedspi.aims;
 import java.util.Scanner;
 
 import hust.soict.hedspi.aims.cart.Cart;
+import hust.soict.hedspi.aims.exception.PlayerException;
 import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.store.Store;
 
 public class Options {
     private static Scanner sc = new Scanner(System.in);
     
-    public static void start(Store aStore, Cart anOrder) {
+    public static void start(Store aStore, Cart anOrder) throws PlayerException {
         Menu.showMainMenu();
 
         int c = sc.nextInt();
@@ -41,7 +42,7 @@ public class Options {
         }
     }
 
-    public static void choosingStoreMenu(Store aStore, Cart anOrder) {
+    public static void choosingStoreMenu(Store aStore, Cart anOrder) throws PlayerException {
         Menu.showStoreMenu();
 
         int c = sc.nextInt();
@@ -82,7 +83,7 @@ public class Options {
         }
     }
 
-    public static void choosingMediaDetailsMenu(Store aStore, Cart anOrder, Media m) {
+    public static void choosingMediaDetailsMenu(Store aStore, Cart anOrder, Media m) throws PlayerException {
         Menu.showMediaDetailsMenu();
 
         int c = sc.nextInt();
@@ -108,7 +109,7 @@ public class Options {
         }
     }
 
-    public static void choosingUpdateStore(Store aStore, Cart anOrder) {
+    public static void choosingUpdateStore(Store aStore, Cart anOrder) throws PlayerException {
         System.out.println("\n How would you like to update the store? \n 1. Add a media \n 2. Remove a media");
         int c = sc.nextInt();
         sc.nextLine();
@@ -144,7 +145,7 @@ public class Options {
         Handler.addMediaStoreAims(aStore, c, title, category, cost);
     }
     
-    public static void choosingCartMenu(Store aStore, Cart anOrder) {
+    public static void choosingCartMenu(Store aStore, Cart anOrder) throws PlayerException {
     	Menu.showCartMenu();
     	int c=sc.nextInt();
     	sc.nextLine();

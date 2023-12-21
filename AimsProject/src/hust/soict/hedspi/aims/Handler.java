@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Scanner;
 
 import hust.soict.hedspi.aims.cart.Cart;
+import hust.soict.hedspi.aims.exception.PlayerException;
 import hust.soict.hedspi.aims.media.*;
 import hust.soict.hedspi.aims.store.Store;
 
@@ -96,7 +97,7 @@ public class Handler {
     
     
     // Play a media
-    public static boolean playMediaAims(Media m) {
+    public static boolean playMediaAims(Media m) throws PlayerException {
         if (m instanceof Playable) {
             ((Playable) m).play();
             return true;

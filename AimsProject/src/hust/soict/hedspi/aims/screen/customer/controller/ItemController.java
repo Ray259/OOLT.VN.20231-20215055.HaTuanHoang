@@ -55,7 +55,7 @@ public class ItemController {
     
     
     @FXML
-    void btnPlayClicked(ActionEvent event) {
+    void btnPlayClicked(ActionEvent event) throws IOException {
         PlayMediaSceneUtil.playMedia(media);
     }
 

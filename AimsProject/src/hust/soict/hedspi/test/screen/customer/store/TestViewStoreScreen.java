@@ -41,7 +41,7 @@ public class TestViewStoreScreen extends Application {
 		ArrayList<String> authorList = new ArrayList<String>();
 		authorList.add("Paulo Coelho");
 		Book book = new Book("The Alchemist","Fiction", authorList, 20f);
-		DigitalVideoDisc dvd = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
+		DigitalVideoDisc dvd = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 0, 19.95f);
 		Track track1 = new Track("Track 1", 120);
         Track track2 = new Track("Track 2", 180);
         ArrayList<Track> tracks = new ArrayList<>();

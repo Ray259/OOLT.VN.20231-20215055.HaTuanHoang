@@ -27,12 +27,12 @@ public abstract class Media {
 	
 	//equals method
 	   @Override
-	   public boolean equals(Object o) {
-	   	Media m = (Media) o;
-	       if (this.getTitle() == m.getTitle()) {
-	           return true;
-	       } else return false;     
-	   }
+	    public boolean equals(Object o) {
+	        if (this == o) return true; 
+	        if (o == null || getClass() != o.getClass()) return false; 
+	        Media media = (Media) o;
+	        return title.equals(media.title) && cost == media.cost; 
+	    }
 	   
     // isMatch method
     public boolean isMatch(String title) {
